@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ali Ebraheem — AI / Deep Learning Portfolio</title>
+  <meta name="description" content="Deep learning projects: NLP, speech, and neural networks from scratch and in PyTorch." />
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --bg-card-hover: #1c2330;
+      --border: #2d333b;
+      --text: #e6edf3;
+      --text-dim: #9da7b3;
+      --accent: #fc6d26;      /* GitLab orange */
+      --accent-2: #6e9eff;
+      --chip-bg: #21262d;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    header {
+      padding: 80px 0 48px;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(1200px 400px at 50% -10%, rgba(252,109,38,0.12), transparent);
+    }
+    header h1 { font-size: 2.6rem; margin: 0 0 8px; letter-spacing: -0.5px; }
+    header .tagline { font-size: 1.15rem; color: var(--text-dim); margin: 0 0 24px; }
+    .links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .links a {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text); font-size: 0.95rem; transition: border-color .15s, background .15s;
+    }
+    .links a:hover { border-color: var(--accent); background: var(--bg-card); text-decoration: none; }
+
+    /* Sections */
+    section { padding: 56px 0; }
+    h2 { font-size: 1.5rem; margin: 0 0 24px; }
+
+    /* Project grid */
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    .card {
+      display: flex; flex-direction: column;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; transition: transform .15s, border-color .15s, background .15s;
+    }
+    .card:hover { transform: translateY(-3px); border-color: var(--accent); background: var(--bg-card-hover); }
+    .card h3 { margin: 0 0 8px; font-size: 1.2rem; }
+    .card p { margin: 0 0 16px; color: var(--text-dim); font-size: 0.95rem; flex-grow: 1; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+    .chip {
+      font-size: 0.75rem; padding: 3px 10px; border-radius: 999px;
+      background: var(--chip-bg); color: var(--text-dim); border: 1px solid var(--border);
+    }
+    .card-link { font-weight: 600; color: var(--accent); }
+    .card-link:hover { text-decoration: underline; }
+
+    footer { padding: 40px 0 64px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.9rem; }
+
+    @media (max-width: 600px) {
+      header { padding: 56px 0 36px; }
+      header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Ali Ebraheem</h1>
+      <p class="tagline">AI / Deep Learning Engineer — NLP &amp; Speech Technologies</p>
+      <nav class="links">
+        <a href="https://gitlab.com/ali_ai_deep_learning" target="_blank" rel="noopener">GitLab</a>
+        <a href="mailto:aliebraheem.syr@gmail.com">Email</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>Projects</h2>
+      <!--
+        Each card links to its GitLab repo:
+        https://gitlab.com/ali_ai_deep_learning/<project>
+      -->
+      <div class="grid">
+
+        <article class="card">
+          <h3>MLP: NumPy &rarr; PyTorch</h3>
+          <p>A multilayer perceptron built from scratch in NumPy (forward pass, backprop, training loop), then reimplemented in PyTorch. Classifies Google QuickDraw sketches across 10 classes.</p>
+          <div class="chips">
+            <span class="chip">NumPy</span>
+            <span class="chip">PyTorch</span>
+            <span class="chip">Backprop</span>
+            <span class="chip">MLP</span>
+          </div>
+          <a class="card-link" href="https://gitlab.com/ali_ai_deep_learning/mlp-numpy-pytorch" target="_blank" rel="noopener">View repo &rarr;</a>
+        </article>
+
+        <article class="card">
+          <h3>Yelp Reviews &mdash; RNN</h3>
+          <p>Five-class review-rating classifier. BERT tokenizer feeds a custom PyTorch Dataset with padded, packed sequences, trained on an RNN that classifies from the final hidden state.</p>
+          <div class="chips">
+            <span class="chip">PyTorch</span>
+            <span class="chip">RNN</span>
+            <span class="chip">NLP</span>
+            <span class="chip">Tokenization</span>
+          </div>
+          <a class="card-link" href="https://gitlab.com/ali_ai_deep_learning/yelp-reviews-rnn" target="_blank" rel="noopener">View repo &rarr;</a>
+        </article>
+
+        <article class="card">
+          <h3>Amazon Polarity &mdash; BoW &amp; RNN</h3>
+          <p>Sentiment classification on Amazon reviews. A Bag-of-Words + Logistic Regression baseline establishes the floor, then a mean-pooling RNN with LayerNorm and dropout improves on it.</p>
+          <div class="chips">
+            <span class="chip">PyTorch</span>
+            <span class="chip">RNN</span>
+            <span class="chip">scikit-learn</span>
+            <span class="chip">NLP</span>
+          </div>
+          <a class="card-link" href="https://gitlab.com/ali_ai_deep_learning/amazon-polarity-rnn" target="_blank" rel="noopener">View repo &rarr;</a>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Built with plain HTML/CSS and deployed on GitHub Pages.
+    </div>
+  </footer>
+</body>
+</html>
