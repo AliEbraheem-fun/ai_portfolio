@@ -25,6 +25,8 @@
       --s2: #2A788E;
       --s3: #22A884;
       --s4: #8FD145;
+      --s5: #C7E020;
+      --s6: #FDE725;
 
       --grid-line: rgba(132, 148, 166, 0.10);
       --cloud: rgba(132, 148, 166, 0.22);
@@ -52,6 +54,8 @@
         --s2: #1F6B7D;
         --s3: #157F5F;
         --s4: #55811C;
+        --s5: #7A7A0E;
+        --s6: #96690A;
 
         --grid-line: rgba(16, 24, 33, 0.07);
         --cloud: rgba(85, 97, 111, 0.20);
@@ -75,6 +79,8 @@
       --s2: #1F6B7D;
       --s3: #157F5F;
       --s4: #55811C;
+      --s5: #7A7A0E;
+      --s6: #96690A;
       --grid-line: rgba(16, 24, 33, 0.07);
       --cloud: rgba(85, 97, 111, 0.20);
       --lift: 0 6px 20px rgba(16, 24, 33, 0.09);
@@ -96,6 +102,8 @@
       --s2: #2A788E;
       --s3: #22A884;
       --s4: #8FD145;
+      --s5: #C7E020;
+      --s6: #FDE725;
       --grid-line: rgba(132, 148, 166, 0.10);
       --cloud: rgba(132, 148, 166, 0.22);
       --lift: 0 6px 24px rgba(0, 0, 0, 0.40);
@@ -446,9 +454,9 @@
         <p class="eyebrow">Deep Learning Engineer, NLP and Speech</p>
         <h1>Ali Ebraheem</h1>
         <p class="thesis">
-          Eighteen projects along a single path: backpropagation derived by hand in
+          Twenty-three projects along a single path: backpropagation derived by hand in
           <strong>NumPy</strong> at one end, pretrained <strong>transformers</strong>
-          fine-tuned on GPU at the other.
+          fine-tuned, made multimodal, and quantized for CPU inference at the other.
         </p>
 
         <nav class="links">
@@ -458,11 +466,11 @@
 
         <div class="metrics">
           <div class="metric">
-            <span class="value">18</span>
+            <span class="value">23</span>
             <span class="label">Projects</span>
           </div>
           <div class="metric">
-            <span class="value">4</span>
+            <span class="value">6</span>
             <span class="label">Stages</span>
           </div>
           <div class="metric">
@@ -482,6 +490,8 @@
           <li><a href="#vision"><span class="key" style="background: var(--s2)"></span>Computer Vision</a></li>
           <li><a href="#sequence"><span class="key" style="background: var(--s3)"></span>Sequence Models</a></li>
           <li><a href="#transformers"><span class="key" style="background: var(--s4)"></span>Transformers</a></li>
+          <li><a href="#multimodal"><span class="key" style="background: var(--s5)"></span>Multimodal</a></li>
+          <li><a href="#efficiency"><span class="key" style="background: var(--s6)"></span>Efficiency</a></li>
         </ul>
       </figure>
 
@@ -674,9 +684,9 @@
         <span class="key" style="background: var(--s4)"></span>
         <h2>Transformers</h2>
         <span class="rule"></span>
-        <span class="count">7 projects</span>
+        <span class="count">10 projects</span>
       </div>
-      <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks.</p>
+      <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks, plus a decoder rebuilt by hand to see where the loss comes from.</p>
 
       <div class="grid">
 
@@ -764,6 +774,94 @@
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/bert_nsp_example" target="_blank" rel="noopener">View repo</a>
         </article>
 
+        <article class="card" data-stage="3">
+          <h3>Decoder Forward Pass (GPT-2)</h3>
+          <p>A GPT-2 decoder assembled by hand, from raw tokens to the first loss value: embeddings, decoder blocks, and an LM head whose weights are tied to the embedding matrix. Verified three ways, against the entropy of a uniform distribution, against GPT2LMHeadModel on identical weights, and through the backward pass.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>GPT-2</li>
+            <li>Weight Tying</li>
+            <li>Language Modeling</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/gpt2_learn" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>Natural Language Inference (DeBERTa-v3)</h3>
+          <p>Entailment, contradiction, or neither, tested on deliberately hard sentence pairs: full lexical overlap with no shared meaning, pronoun resolution, and a cause buried at the end of a long sentence. Includes zero-shot classification built by hand on top of the NLI head, with no labelled data at all.</p>
+          <ul class="chips">
+            <li>Transformers</li>
+            <li>DeBERTa</li>
+            <li>NLI</li>
+            <li>Zero-shot</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/deberta_nli_example" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>Multilingual Sentiment (XLM-R)</h3>
+          <p>One sentiment model across five languages, checking that the same review in English, Russian, Spanish, German, and Arabic lands on the same label. Measures the batching speedup (12.9x over one-at-a-time) and maps where the model fails: negation and sarcasm, the latter confidently.</p>
+          <ul class="chips">
+            <li>Transformers</li>
+            <li>XLM-RoBERTa</li>
+            <li>Multilingual</li>
+            <li>Sentiment</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/xlmr_tonality_example" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="stage" id="multimodal" style="--stage: var(--s5)">
+      <div class="stage-head">
+        <span class="key" style="background: var(--s5)"></span>
+        <h2>Multimodal</h2>
+        <span class="rule"></span>
+        <span class="count">1 project</span>
+      </div>
+      <p class="stage-note">Models that read text and images together in a single head.</p>
+
+      <div class="grid">
+
+        <article class="card" data-stage="4">
+          <h3>Dish Calorie Regression</h3>
+          <p>Predicts the calorie content of a dish from its photo and ingredient list. BERT encodes the ingredients, EfficientNet-B0 encodes the image, and both projections are fused into one regression head. The network predicts calorie density rather than calories, then multiplies by portion mass, which builds the multiplicative structure of the task into the model. Test MAE 32.75 kcal against a project target of 50 and a mass-only baseline of 105.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>Multimodal</li>
+            <li>BERT</li>
+            <li>EfficientNet</li>
+          </ul>
+          <a class="card-link" href="https://github.com/AliEbraheem-fun/dish_calories_multimodal_regression" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="stage" id="efficiency" style="--stage: var(--s6)">
+      <div class="stage-head">
+        <span class="key" style="background: var(--s6)"></span>
+        <h2>Efficiency</h2>
+        <span class="rule"></span>
+        <span class="count">1 project</span>
+      </div>
+      <p class="stage-note">Making a trained model smaller and faster for inference, and measuring what it costs.</p>
+
+      <div class="grid">
+
+        <article class="card" data-stage="5">
+          <h3>Post-Training Quantization</h3>
+          <p>Dynamic int8 quantization of a transformer with no retraining and no calibration set, benchmarked on two models with different weight profiles. bert-base shrinks 2.41x and runs 1.90x faster on CPU; a compact model shrinks only 1.18x and runs 1.4x <em>slower</em>, because just 20 percent of its weights sit in linear layers. Accuracy holds either way: 10 of 10 predictions unchanged.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>Quantization</li>
+            <li>INT8</li>
+            <li>Inference</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/post_training_quantization_example" target="_blank" rel="noopener">View repo</a>
+        </article>
+
       </div>
     </section>
 
@@ -787,16 +885,18 @@
 
       // one cluster per stage; counts match the sections above
       var clusters = [
-        { x: 0.20, y: 0.74, n: 3, spread: 0.075 },
-        { x: 0.37, y: 0.31, n: 4, spread: 0.085 },
-        { x: 0.64, y: 0.66, n: 4, spread: 0.085 },
-        { x: 0.83, y: 0.28, n: 7, spread: 0.105 }
+        { x: 0.18, y: 0.76, n: 3, spread: 0.075 },
+        { x: 0.33, y: 0.31, n: 4, spread: 0.085 },
+        { x: 0.55, y: 0.70, n: 4, spread: 0.085 },
+        { x: 0.76, y: 0.30, n: 10, spread: 0.120 },
+        { x: 0.50, y: 0.46, n: 1, spread: 0.030 },
+        { x: 0.92, y: 0.76, n: 1, spread: 0.030 }
       ];
 
       var stageColors = [];
       function readColors() {
         var cs = getComputedStyle(document.documentElement);
-        stageColors = ["--s1", "--s2", "--s3", "--s4"].map(function (v) {
+        stageColors = ["--s1", "--s2", "--s3", "--s4", "--s5", "--s6"].map(function (v) {
           return cs.getPropertyValue(v).trim() || "#888";
         });
         gridColor = cs.getPropertyValue("--grid-line").trim() || "rgba(128,128,128,.1)";
