@@ -454,7 +454,7 @@
         <p class="eyebrow">Deep Learning Engineer, NLP and Speech</p>
         <h1>Ali Ebraheem</h1>
         <p class="thesis">
-          Twenty-three projects along a single path: backpropagation derived by hand in
+          Twenty-four projects along a single path: backpropagation derived by hand in
           <strong>NumPy</strong> at one end, pretrained <strong>transformers</strong>
           fine-tuned, made multimodal, and quantized for CPU inference at the other.
         </p>
@@ -466,7 +466,7 @@
 
         <div class="metrics">
           <div class="metric">
-            <span class="value">23</span>
+            <span class="value">24</span>
             <span class="label">Projects</span>
           </div>
           <div class="metric">
@@ -684,7 +684,7 @@
         <span class="key" style="background: var(--s4)"></span>
         <h2>Transformers</h2>
         <span class="rule"></span>
-        <span class="count">10 projects</span>
+        <span class="count">11 projects</span>
       </div>
       <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks, plus a decoder rebuilt by hand to see where the loss comes from.</p>
 
@@ -810,6 +810,18 @@
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/xlmr_tonality_example" target="_blank" rel="noopener">View repo</a>
         </article>
 
+        <article class="card" data-stage="3">
+          <h3>Sampling and Decoding Strategies (Qwen2.5)</h3>
+          <p>Next-token selection built by hand instead of through generate(): temperature, top-k, top-p, repetition penalty, and a generation loop over Qwen2.5-0.5B. Two details fail in the obvious implementation. Dividing a logit to penalise a repeat <em>raises</em> the probability of any token whose logit is negative, and 99.2 percent of Qwen's are. Profiling then showed a Python loop over the history costing as much as a full forward pass, hiding the KV cache speedup completely.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>Qwen</li>
+            <li>Sampling</li>
+            <li>KV Cache</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/qwen_sampling_example" target="_blank" rel="noopener">View repo</a>
+        </article>
+
       </div>
     </section>
 
@@ -888,7 +900,7 @@
         { x: 0.18, y: 0.76, n: 3, spread: 0.075 },
         { x: 0.33, y: 0.31, n: 4, spread: 0.085 },
         { x: 0.55, y: 0.70, n: 4, spread: 0.085 },
-        { x: 0.76, y: 0.30, n: 10, spread: 0.120 },
+        { x: 0.76, y: 0.30, n: 11, spread: 0.120 },
         { x: 0.50, y: 0.46, n: 1, spread: 0.030 },
         { x: 0.92, y: 0.76, n: 1, spread: 0.030 }
       ];
