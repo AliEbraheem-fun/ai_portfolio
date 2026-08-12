@@ -454,7 +454,7 @@
         <p class="eyebrow">Deep Learning Engineer, NLP and Speech</p>
         <h1>Ali Ebraheem</h1>
         <p class="thesis">
-          Twenty-six projects along a single path: backpropagation derived by hand in
+          Twenty-seven projects along a single path: backpropagation derived by hand in
           <strong>NumPy</strong> at one end, pretrained <strong>transformers</strong>
           fine-tuned, made multimodal, and quantized for CPU inference at the other.
         </p>
@@ -466,7 +466,7 @@
 
         <div class="metrics">
           <div class="metric">
-            <span class="value">26</span>
+            <span class="value">27</span>
             <span class="label">Projects</span>
           </div>
           <div class="metric">
@@ -868,7 +868,7 @@
         <span class="key" style="background: var(--s6)"></span>
         <h2>Efficiency</h2>
         <span class="rule"></span>
-        <span class="count">2 projects</span>
+        <span class="count">3 projects</span>
       </div>
       <p class="stage-note">Fitting training and inference into the hardware actually available, and measuring what it costs.</p>
 
@@ -896,6 +896,18 @@
             <li>QLoRA</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/qwen_peft_adapters" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="5">
+          <h3>SFT on an Instruction Set: What Four Methods Cost</h3>
+          <p>One dataset, one model, one set of hyperparameters, varying only the training method, with peak VRAM and seconds-per-step measured for each. Full fine-tuning of a 0.6B model at length 1024 runs out of memory on an 8 GB card, so LoRA is not an economy here but the only way to train at all. int8 quantisation then does the opposite of its billing: 5.43 GB against LoRA's 4.61, and 2.2x slower per step, because on a small base the dequantisation overhead outweighs anything saved. Gradient checkpointing was the one knob that behaved as advertised, trading 17 percent of memory for 64 percent more time.</p>
+          <ul class="chips">
+            <li>TRL</li>
+            <li>PEFT</li>
+            <li>bitsandbytes</li>
+            <li>Benchmarking</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/qwen_sft_instruct" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
@@ -926,7 +938,7 @@
         { x: 0.55, y: 0.70, n: 4, spread: 0.085 },
         { x: 0.76, y: 0.30, n: 12, spread: 0.120 },
         { x: 0.50, y: 0.46, n: 1, spread: 0.030 },
-        { x: 0.92, y: 0.76, n: 2, spread: 0.045 }
+        { x: 0.92, y: 0.76, n: 3, spread: 0.055 }
       ];
 
       var stageColors = [];
