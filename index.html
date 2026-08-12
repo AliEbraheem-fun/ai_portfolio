@@ -454,7 +454,7 @@
         <p class="eyebrow">Deep Learning Engineer, NLP and Speech</p>
         <h1>Ali Ebraheem</h1>
         <p class="thesis">
-          Twenty-five projects along a single path: backpropagation derived by hand in
+          Twenty-six projects along a single path: backpropagation derived by hand in
           <strong>NumPy</strong> at one end, pretrained <strong>transformers</strong>
           fine-tuned, made multimodal, and quantized for CPU inference at the other.
         </p>
@@ -466,7 +466,7 @@
 
         <div class="metrics">
           <div class="metric">
-            <span class="value">25</span>
+            <span class="value">26</span>
             <span class="label">Projects</span>
           </div>
           <div class="metric">
@@ -868,9 +868,9 @@
         <span class="key" style="background: var(--s6)"></span>
         <h2>Efficiency</h2>
         <span class="rule"></span>
-        <span class="count">1 project</span>
+        <span class="count">2 projects</span>
       </div>
-      <p class="stage-note">Making a trained model smaller and faster for inference, and measuring what it costs.</p>
+      <p class="stage-note">Fitting training and inference into the hardware actually available, and measuring what it costs.</p>
 
       <div class="grid">
 
@@ -884,6 +884,18 @@
             <li>Inference</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/post_training_quantization_example" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="5">
+          <h3>Efficient Fine-Tuning: LoRA, P-tuning, QLoRA</h3>
+          <p>Adapters written from scratch, then run for real on Qwen2.5-0.5B: a low-rank LoRA layer, learnable soft-prompt tokens, and a 4-bit QLoRA base, each checked by measuring peak VRAM rather than trusting the formula. Trainable parameters fall 457x while memory falls only 1.7x, because frozen weights still occupy the card. The reference LoRA initialisation turns out to be wrong: at step zero the adapter's contribution is 2.26x larger than the base layer's own output, because neither matrix is zero-initialised.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>PEFT</li>
+            <li>LoRA</li>
+            <li>QLoRA</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/qwen_peft_adapters" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
@@ -914,7 +926,7 @@
         { x: 0.55, y: 0.70, n: 4, spread: 0.085 },
         { x: 0.76, y: 0.30, n: 12, spread: 0.120 },
         { x: 0.50, y: 0.46, n: 1, spread: 0.030 },
-        { x: 0.92, y: 0.76, n: 1, spread: 0.030 }
+        { x: 0.92, y: 0.76, n: 2, spread: 0.045 }
       ];
 
       var stageColors = [];
