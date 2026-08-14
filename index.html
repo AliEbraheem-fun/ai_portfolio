@@ -454,7 +454,7 @@
         <p class="eyebrow">Deep Learning Engineer, NLP and Speech</p>
         <h1>Ali Ebraheem</h1>
         <p class="thesis">
-          Twenty-seven projects along a single path: backpropagation derived by hand in
+          Twenty-eight projects along a single path: backpropagation derived by hand in
           <strong>NumPy</strong> at one end, pretrained <strong>transformers</strong>
           fine-tuned, made multimodal, and quantized for CPU inference at the other.
         </p>
@@ -466,7 +466,7 @@
 
         <div class="metrics">
           <div class="metric">
-            <span class="value">27</span>
+            <span class="value">28</span>
             <span class="label">Projects</span>
           </div>
           <div class="metric">
@@ -868,7 +868,7 @@
         <span class="key" style="background: var(--s6)"></span>
         <h2>Efficiency</h2>
         <span class="rule"></span>
-        <span class="count">3 projects</span>
+        <span class="count">4 projects</span>
       </div>
       <p class="stage-note">Fitting training and inference into the hardware actually available, and measuring what it costs.</p>
 
@@ -910,6 +910,18 @@
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/qwen_sft_instruct" target="_blank" rel="noopener">View repo</a>
         </article>
 
+        <article class="card" data-stage="5">
+          <h3>Inference Efficiency: Prompting, Speculation, Quantization</h3>
+          <p>A marketplace case study generating 100 product descriptions under a fixed quality metric, measuring latency and throughput for each optimisation. Decomposing the metric first showed 40 of its 100 points were unreachable by construction, and that the entire real headroom sat in one term. Batching gave 3.6x but the curve turns over at 16 requests as padding eats the gain. bitsandbytes NF4 halved memory and made generation <em>27 percent slower</em> — the opposite of the AWQ result it is usually quoted alongside, because NF4 dequantises to bf16 on every matmul.</p>
+          <ul class="chips">
+            <li>Transformers</li>
+            <li>Quantization</li>
+            <li>Speculative Decoding</li>
+            <li>Benchmarking</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/llm_inference_efficiency" target="_blank" rel="noopener">View repo</a>
+        </article>
+
       </div>
     </section>
 
@@ -938,7 +950,7 @@
         { x: 0.55, y: 0.70, n: 4, spread: 0.085 },
         { x: 0.76, y: 0.30, n: 12, spread: 0.120 },
         { x: 0.50, y: 0.46, n: 1, spread: 0.030 },
-        { x: 0.92, y: 0.76, n: 3, spread: 0.055 }
+        { x: 0.92, y: 0.76, n: 4, spread: 0.065 }
       ];
 
       var stageColors = [];
