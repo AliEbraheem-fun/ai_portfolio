@@ -454,7 +454,7 @@
         <p class="eyebrow">Deep Learning Engineer, NLP and Speech</p>
         <h1>Ali Ebraheem</h1>
         <p class="thesis">
-          Twenty-eight projects along a single path: backpropagation derived by hand in
+          Thirty-three projects along a single path: backpropagation derived by hand in
           <strong>NumPy</strong> at one end, pretrained <strong>transformers</strong>
           fine-tuned, made multimodal, and quantized for CPU inference at the other.
         </p>
@@ -466,7 +466,7 @@
 
         <div class="metrics">
           <div class="metric">
-            <span class="value">28</span>
+            <span class="value">33</span>
             <span class="label">Projects</span>
           </div>
           <div class="metric">
@@ -684,7 +684,7 @@
         <span class="key" style="background: var(--s4)"></span>
         <h2>Transformers</h2>
         <span class="rule"></span>
-        <span class="count">12 projects</span>
+        <span class="count">15 projects</span>
       </div>
       <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks, plus a decoder rebuilt by hand to see where the loss comes from.</p>
 
@@ -834,6 +834,42 @@
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/qwen_prompting_methods" target="_blank" rel="noopener">View repo</a>
         </article>
 
+        <article class="card" data-stage="3">
+          <h3>Named Entity Recognition for Russian (ruBERT-tiny2)</h3>
+          <p>A NER pipeline on factRuEval-2016: entity markup reduced to PER, ORG, LOC and MISC in BIO scheme, tokens aligned against ruBERT-tiny2 subtokens, then fine-tuned for token classification. Macro F1 rises from 0.057 to 0.252 across five epochs. The absolute numbers are low by construction — 203 training documents and a deliberately compact model — but the gain from fine-tuning is unambiguous and the pipeline is reproducible end to end. Includes attention visualisation through bertviz.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>ruBERT</li>
+            <li>NER</li>
+            <li>BIO Tagging</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/ner_pipeline_example" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>Multi-task NER and Document Tagging (ruBERT)</h3>
+          <p>One encoder carrying two heads: BIO token tagging for named entities, and a 30-label binary classifier over the [CLS] vector for document-level attributes, trained jointly on NEREL. Both targets met — token F1 macro 0.729 against a 0.5 bar, CLS micro F1 0.803 against 0.8 — with no negative transfer between tasks. The decisive factor turned out not to be architecture but schedule length: at eight epochs the learning rate decayed to nearly zero and classification stalled at 0.79, looking like a plateau that wasn't one.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>ruBERT</li>
+            <li>Multi-task</li>
+            <li>NEREL</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/multitask_ner_classification_rubert" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>Hosted LLMs via API (OpenRouter)</h3>
+          <p>Four techniques against a hosted model rather than a local one: system prompts with generation parameters, forcing strict JSON that drops straight into <code>json.loads</code>, few-shot classification with no training at all, and comparing an instruct model against a reasoning model with token accounting. The practical catch is that a reasoning model returns an empty <code>content</code> field when its thinking is cut off by the token budget, so client code has to survive that rather than assume text.</p>
+          <ul class="chips">
+            <li>OpenRouter</li>
+            <li>OpenAI SDK</li>
+            <li>Prompting</li>
+            <li>Structured Output</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/api_example" target="_blank" rel="noopener">View repo</a>
+        </article>
+
       </div>
     </section>
 
@@ -842,7 +878,7 @@
         <span class="key" style="background: var(--s5)"></span>
         <h2>Multimodal</h2>
         <span class="rule"></span>
-        <span class="count">1 project</span>
+        <span class="count">3 projects</span>
       </div>
       <p class="stage-note">Models that read text and images together in a single head.</p>
 
@@ -858,6 +894,30 @@
             <li>EfficientNet</li>
           </ul>
           <a class="card-link" href="https://github.com/AliEbraheem-fun/dish_calories_multimodal_regression" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="4">
+          <h3>Frozen vs Unfrozen Encoders</h3>
+          <p>The same multimodal model trained two ways on movie posters plus plot text across four genres. Fully frozen encoders, with only the projections and classifier learning, reach 0.675 validation F1 and underfit — train and validation stay close and both stay low. Unfreezing the top BERT block and the top EfficientNet block reaches 0.875, a gain of 0.20, but train F1 climbs to 1.0 against 0.85 validation. The gain is real and so is the overfitting it brings on 800 training examples.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>Transfer Learning</li>
+            <li>Multimodal</li>
+            <li>Fine-tuning</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/movie_genre_multimodal_experiments" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="4">
+          <h3>Multimodal Architecture Walkthrough</h3>
+          <p>How a two-branch model is actually assembled: BERT encodes the text, EfficientNet-B0 encodes the image, both projections land in a shared space and are fused before the classifier. Deliberately left untrained — the subject is the data path through both branches and the fusion point, not a metric, and the notebook says so rather than presenting untrained predictions as results. The trained version of this same architecture is the movie-genre experiment alongside it.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>BERT</li>
+            <li>EfficientNet</li>
+            <li>Multimodal</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/multimodal_text_image_classifier" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
@@ -948,8 +1008,8 @@
         { x: 0.18, y: 0.76, n: 3, spread: 0.075 },
         { x: 0.33, y: 0.31, n: 4, spread: 0.085 },
         { x: 0.55, y: 0.70, n: 4, spread: 0.085 },
-        { x: 0.76, y: 0.30, n: 12, spread: 0.120 },
-        { x: 0.50, y: 0.46, n: 1, spread: 0.030 },
+        { x: 0.76, y: 0.30, n: 15, spread: 0.130 },
+        { x: 0.50, y: 0.46, n: 3, spread: 0.055 },
         { x: 0.92, y: 0.76, n: 4, spread: 0.065 }
       ];
 
