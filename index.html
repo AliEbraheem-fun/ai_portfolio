@@ -930,6 +930,18 @@
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/rumedner_ner_approaches" target="_blank" rel="noopener">View repo</a>
         </article>
 
+        <article class="card" data-stage="3">
+          <h3>Question Answering with LoRA (SberQuAD)</h3>
+          <p>ruT5-base on the Russian SQuAD analogue, measured three ways against three metrics. Untouched the model scores EM 0.00 and answers every question with '::', since it is a pretrained T5 with no instruction tuning; full fine-tuning takes it to EM 65.08 and F1 82.52, and a rank-8 LoRA on q/k/v reaches 48.21 and 72.28 while training 0.592 percent of the weights. Two findings came out of the gap. LoRA's deficit is largely about span boundaries rather than comprehension: it systematically drops the leading preposition, answering 'Древнем Египте' where the reference is 'в Древнем Египте', which is why the EM gap of 16.9 points is double the F1 gap of 10.2. And LoRA saved only 16.5 percent of VRAM and 17.3 percent of training time, not the usual order of magnitude, because the lesson's optimiser is Adafactor rather than Adam, so the optimiser state LoRA normally eliminates was never being stored, while the backward pass still traverses the frozen network to reach the adapters.</p>
+          <ul class="chips">
+            <li>ruT5</li>
+            <li>LoRA / PEFT</li>
+            <li>SberQuAD</li>
+            <li>EM / F1 / CER</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/sberquad_rut5_lora_qa" target="_blank" rel="noopener">View repo</a>
+        </article>
+
       </div>
     </section>
 
