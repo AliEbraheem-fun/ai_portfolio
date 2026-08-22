@@ -882,6 +882,42 @@
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/llm_pretrain_sft_project" target="_blank" rel="noopener">View repo</a>
         </article>
 
+        <article class="card" data-stage="3">
+          <h3>Cross-Attention and Teacher Forcing</h3>
+          <p>Cross-attention implemented from scratch, then an encoder-decoder built on top of it. Teacher Forcing cut the training step from 80.23 ms to 14.13 ms at output length 20, a 5.7x gain on identical arithmetic: greedy decoding runs twenty strictly sequential steps, Teacher Forcing does one call across the full length. The price is exposure bias, since the model only ever sees correct inputs during training. Verified on a reverse-the-sequence task with a known answer: loss fell from 3.007 to 0.0007 over 600 steps and the attention map settled onto the anti-diagonal, against a uniform 0.25 before training.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>Attention</li>
+            <li>Seq2Seq</li>
+            <li>Teacher Forcing</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/seq2seq_cross_attention" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>T5 Span Corruption</h3>
+          <p>T5's pretraining objective rebuilt by hand and checked against what the theory claims. The requested noise ratio holds only on long inputs: 0.15 comes out as 0.154 at 512 tokens but 0.212 at 32, because the loop stops only after the quota is exceeded, so the final span always overshoots. The geometric length distribution puts a third of spans at a single token and barely 2 percent past ten. The lesson's expected output also does not reproduce from a clean random.seed(42): the code is correct, but those exact spans require seven random draws to be consumed first. A seed fixes where a sequence starts, not how much of it a notebook has already used.</p>
+          <ul class="chips">
+            <li>T5</li>
+            <li>Pretraining</li>
+            <li>C4</li>
+            <li>Reproducibility</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/t5_span_corruption" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>Machine Translation en-ru (WMT20)</h3>
+          <p>A specialised opus-mt-en-ru scores BLEU 0.2031 and chrF 49.47 with no fine-tuning at all; mT5-small fine-tuned on 1601 pairs reaches 0.0273 and 20.70. The fine-tuned model learned Russian grammar and the news register but not translation: its output is fluent, correctly inflected, and factually unrelated to the source. Three hardware traps are documented, each failing in a different way. bf16=True is accepted silently on a Tesla T4 and runs 61 percent slower than fp32 because Turing emulates it; fp16, the obvious substitute, returns nan on mT5; and unbounded Trainer checkpointing filled the 40 GB disk and destroyed a completed run at its final save.</p>
+          <ul class="chips">
+            <li>mT5</li>
+            <li>MarianMT</li>
+            <li>BLEU / chrF</li>
+            <li>Tesla T4</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/wmt20_en_ru_translation" target="_blank" rel="noopener">View repo</a>
+        </article>
+
       </div>
     </section>
 
