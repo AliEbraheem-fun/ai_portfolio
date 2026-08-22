@@ -918,6 +918,18 @@
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/wmt20_en_ru_translation" target="_blank" rel="noopener">View repo</a>
         </article>
 
+        <article class="card" data-stage="3">
+          <h3>NER as Generation (RuMedNER)</h3>
+          <p>Four approaches to one medical NER task, scored on a single metric with honest timing. Fine-tuned BERT wins on every axis at F1 0.426 and 7 ms per example, 131x faster than vLLM and 315x faster than naive generation, and it wins while being the wrong model for the job: bert-base-cased splits Russian into 4.58 subword tokens per word, effectively character level. Qwen3-1.7B under vLLM constrained decoding, given a Pydantic schema and zero training examples, reaches 0.250 and beats a fine-tuned mT5-small at 0.175. Per-class F1 turns out to track vocabulary shape rather than frequency: Drugclass scores 0.718 from 232 training entities while DI scores 0.302 from 995. Three silent failures are documented, none of which raises an exception. StrEnum requires Python 3.11 and the lesson VM ships 3.10, where the obvious backport makes str() return 'A.drugname', so every predicted tag is dropped and F1 becomes exactly 0.000. Constrained decoding guarantees the format but not termination, and 19 of 100 answers ran to the token cap emitting the whitespace a JSON grammar permits. And padding seq2seq targets with pad rather than -100 sends 96 percent of the training signal into predicting emptiness, which is what produces the looping output.</p>
+          <ul class="chips">
+            <li>BERT</li>
+            <li>vLLM</li>
+            <li>Structured Outputs</li>
+            <li>seqeval</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/rumedner_ner_approaches" target="_blank" rel="noopener">View repo</a>
+        </article>
+
       </div>
     </section>
 
