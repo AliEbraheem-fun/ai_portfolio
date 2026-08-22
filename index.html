@@ -942,6 +942,18 @@
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/sberquad_rut5_lora_qa" target="_blank" rel="noopener">View repo</a>
         </article>
 
+        <article class="card" data-stage="3">
+          <h3>RAG from Scratch</h3>
+          <p>A retrieval-augmented generation system built by hand on transformers and sklearn, no frameworks: rubert-tiny2 for embeddings, cosine similarity for search, Qwen2.5-1.5B-Instruct for answering, running end to end on CPU in 1.7 minutes. Under two percent of the system's parameters do the retrieving, and the whole twelve document knowledge base fits in 14.6 KB. Three bugs in the reference solution are reproduced and measured, none of which the lesson's own demo can reveal. A double argsort returns ranks instead of sorted order, which is provably harmless at exactly two documents because every permutation of two elements is its own inverse, and the demo uses exactly two; at three it is already wrong 33.7 percent of the time and at ten it returns the wrong best match 79.3 percent of the time. np.vstack is called with a PyTorch dim argument, so the second insert raises and leaves texts and vectors misaligned. And padding every short fact to 512 tokens costs 33.5x the compute for a byte-identical result. The retrieval failure is the dangerous one: it returns real documents, just the wrong ones, so the model answers fluently and the system merely looks underinformed.</p>
+          <ul class="chips">
+            <li>RAG</li>
+            <li>Embeddings</li>
+            <li>rubert-tiny2</li>
+            <li>Qwen2.5</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/rag_from_scratch" target="_blank" rel="noopener">View repo</a>
+        </article>
+
       </div>
     </section>
 
