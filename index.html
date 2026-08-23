@@ -966,6 +966,18 @@
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/cross_encoder_reranking" target="_blank" rel="noopener">View repo</a>
         </article>
 
+        <article class="card" data-stage="3">
+          <h3>arXiv Retrieval System</h3>
+          <p>Graded module project: search 98,213 arXiv abstracts, hit MRR@5 above 0.91, and profile every component. Final score 0.9386, and the interesting part is that no single method gets there. TF-IDF reaches 0.8236, a dense MiniLM bi-encoder 0.8531, fusing both by Reciprocal Rank Fusion 0.8981, still short; only cross-encoder reranking clears the bar at 0.9293 over 20 candidates and 0.9386 over 50. Both models are 22M parameters, so the target is met by architecture rather than model size. Reranking barely improves Recall@5 (0.955 to 0.972) while moving Hit@1 from 0.858 to 0.913 — retrieval was already finding the right paper and simply not ranking it first, which is exactly what MRR punishes when there is one correct answer per query. Profiling produced a counterintuitive bottleneck: inside dense search the index costs 4.15 ms against 0.46 ms to encode the query, nine times more, and IndexFlatIP scales linearly from 0.22 ms at 5k documents to 4.22 ms at 98k, extrapolating to 430 ms at 10M. The cap on this system is the flat index, not the neural network — while the cross-encoder is 97 percent of per-query latency. Written to run fully offline after the VM turned out to have no route to HuggingFace at all.</p>
+          <ul class="chips">
+            <li>FAISS</li>
+            <li>Reranking</li>
+            <li>MRR@5</li>
+            <li>Profiling</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/arxiv_retrieval_project" target="_blank" rel="noopener">View repo</a>
+        </article>
+
       </div>
     </section>
 
