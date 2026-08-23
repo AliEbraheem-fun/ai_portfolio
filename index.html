@@ -954,6 +954,18 @@
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/rag_from_scratch" target="_blank" rel="noopener">View repo</a>
         </article>
 
+        <article class="card" data-stage="3">
+          <h3>Cross-Encoder Reranking</h3>
+          <p>Four rankers measured on the same labelled candidates with NDCG, MRR and P@3, plus the cost that makes retrieve-then-rerank exist at all. The lesson's own output reproduces to six decimals, including the result it waves away as models making mistakes: asked how to choose a laptop for work, its cross-encoder ranks how to connect a laptop to a TV first. That is the checkpoint, not the architecture. stsb-roberta-base is trained on Semantic Textual Similarity, so it scores a question against its own correct answer at 0.3487 while scoring a paraphrase at 0.7611, and it gives a perfect COVID symptom match 0.2071 against 0.2064 for an unrelated Python versus JavaScript pair. Swapping to a relevance-trained ms-marco checkpoint fixes the ranking and is five times smaller and seven times faster. The uncomfortable finding is that on this corpus reranking earns nothing at all: a plain bi-encoder wins on one query and on four (NDCG 0.996) while costing 560x less per pair than Qwen3-Reranker, because ten short titles with one obvious answer each is too easy a task to need it. Cost is what justifies the architecture instead: reranking a million documents takes 191 hours with Qwen against 3.9 seconds for brute-force bi-encoder scan, since a bi-encoder encodes each document once at index time and a cross-encoder must redo every pair per query. Also documents how bfloat16 collapses 0.999457 to exactly 1.0.</p>
+          <ul class="chips">
+            <li>Cross-Encoder</li>
+            <li>Reranking</li>
+            <li>NDCG / MRR</li>
+            <li>Qwen3-Reranker</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/cross_encoder_reranking" target="_blank" rel="noopener">View repo</a>
+        </article>
+
       </div>
     </section>
 
