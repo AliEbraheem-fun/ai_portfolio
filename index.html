@@ -684,7 +684,7 @@
         <span class="key" style="background: var(--s4)"></span>
         <h2>Transformers</h2>
         <span class="rule"></span>
-        <span class="count">25 projects</span>
+        <span class="count">26 projects</span>
       </div>
       <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks, plus a decoder rebuilt by hand to see where the loss comes from.</p>
 
@@ -988,6 +988,18 @@
             <li>CPU only</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/fuzzy_search_levenshtein" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>OpenSearch Full-Text Search</h3>
+          <p>BM25 and boolean queries on a live OpenSearch 2.16 cluster, done on the course VM. Both exercises reproduce the author's solution exactly, including the hit order, and that order is the first thing worth explaining: a range clause inside should contributes a flat 1.0 while the BM25 match on author scores 0.9066489, so a placeholder row whose author is literally "unknown" outranks the actual Dostoevsky book. Second finding contradicts the lesson directly: should is only OR while it is alone in the bool. Adding a must or a filter drops minimum_should_match from 1 to 0, should stops selecting and becomes a score bonus, and the result set silently grows from 2 documents to 3 with a book that matches neither clause. Nothing errors. Third, the score is reproduced by hand to within 1.07e-08, which exposes all three ways Lucene departs from the textbook formula the lesson prints: the (k1+1) factor is hoisted into boost, lengths are per-field rather than per-document, and IDF carries a +1 inside the log. That last one is not cosmetic. Without it IDF turns negative once a term appears in more than half the corpus, so a document is penalised for containing the query word, and penalised harder the more often it appears (-1.37 for one occurrence, -2.15 for three). Fourth, exercise two's fuzziness does nothing: the English stemmer folds Moby and mobi to the same term, and the query returns an identical document at an identical 1.0926 with the fuzzy matcher removed. Fifth, term-level probes show Lucene scores transpositions as one edit, not two, so it is Damerau-Levenshtein rather than plain Levenshtein, and AUTO allows 1 edit at 3-5 characters and 2 beyond. Also flags that the lesson's own track data has title and artist swapped, and that the VM ships Python 3.12 with no pip against a page promising 3.10 with pip.</p>
+          <ul class="chips">
+            <li>OpenSearch</li>
+            <li>BM25</li>
+            <li>Lucene</li>
+            <li>Fuzzy Search</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/opensearch_fulltext_search" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
