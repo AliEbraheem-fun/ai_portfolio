@@ -684,7 +684,7 @@
         <span class="key" style="background: var(--s4)"></span>
         <h2>Transformers</h2>
         <span class="rule"></span>
-        <span class="count">27 projects</span>
+        <span class="count">28 projects</span>
       </div>
       <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks, plus a decoder rebuilt by hand to see where the loss comes from.</p>
 
@@ -1012,6 +1012,18 @@
             <li>Deduplication</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/lsh_text_deduplication" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>Deduplication Showdown Bug</h3>
+          <p>A course exercise comparing FAISS-plus-embeddings against LSH for near-duplicate detection on 5,000 labeled texts, run on a rented Tesla T4, turned into finding a real indexing bug in the published reference solution. Its dedup loop reads for i, emb in enumerate(self.embeddings[1:]), which numbers elements of the slice rather than the original array, so every recorded index from the second document onward is off by one; confirmed on a toy example where added_ids comes out [0, 0, 1, 2, 3, 4] instead of the correct [0, 1, 2, 3, 4, 5], then confirmed again on the real embeddings, where the shift flips the duplicate/unique label for 2,702 of the 5,000 texts. That single-line bug is the entire reason the lesson concludes LSH beats embeddings by a wide margin: the reference f1 of 0.6908 reproduces almost exactly (0.6910) when the bug is left in, but correcting the index alone raises f1 to 0.9526 with perfect precision, cutting the gap with LSH's 0.9661 from 0.28 to 0.0135. The lesson's own headline claim turns out to be an artifact of broken code, not a property of the two methods. A second, unrelated bug sits in the lesson's own answer for the metrics task: all three LSH lines pass df["pred_embed"] instead of df["pred_lsh"], which the notebook demonstrates by running that exact code and showing f1_lsh come out identical to f1_emb, contradicting the lesson's own printed expected output. The one claim that does hold up without qualification is speed: LSH cleared the dataset in 5.59 seconds against 747.1 seconds for embeddings, 133 times faster with no GPU. Also documents that transformers 5.x now loads Qwen3-Embedding-0.6B in bfloat16 by default, breaking a bare .numpy() call, and that the precode's batch_size=128 OOMs on a 15GB T4 since the reference ran on an A100.</p>
+          <ul class="chips">
+            <li>FAISS</li>
+            <li>LSH</li>
+            <li>Deduplication</li>
+            <li>Qwen3-Embedding</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/dedup_embeddings_vs_lsh" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
