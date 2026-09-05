@@ -684,7 +684,7 @@
         <span class="key" style="background: var(--s4)"></span>
         <h2>Transformers</h2>
         <span class="rule"></span>
-        <span class="count">26 projects</span>
+        <span class="count">27 projects</span>
       </div>
       <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks, plus a decoder rebuilt by hand to see where the loss comes from.</p>
 
@@ -1000,6 +1000,18 @@
             <li>Fuzzy Search</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/opensearch_fulltext_search" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>LSH Text Deduplication</h3>
+          <p>MinHash and LSH built by hand, then reproduced in datasketch, to find near-duplicate documents without embeddings. The lesson's own worked example turns out not to reproduce: it builds the shared vocabulary from a Python set, and set iteration order depends on the interpreter's hash salt, so the same random.seed(42) lands on a different token order every run, verified across four hash seeds. More consequential, the lesson estimates signature similarity as the Jaccard of the signature's value-set rather than the fraction of matching positions, which is the standard MinHash estimator; measured against 600 pairs with known ground truth, that choice overestimates true Jaccard by 0.31 on average and by up to 0.81 in the worst case, while the positional estimator stays within 0.04. The banding formula p = 1-(1-s^r)^b itself checks out, confirmed to within 0.01 against both synthetic data and real MinHash signatures. The deduplication exercise's own expected answer turns out to be a coin flip rather than a fact: at the assignment's num_perm=18 it appears in only 49.8% of random seeds, and datasketch's own default seed produces an empty result instead of the lesson's answer, because the formula gives that exact pair a 67.7% chance of ever becoming a candidate, not a certainty. Finally, LSH's promised speedup over brute-force comparison is measured rather than asserted: 5.6x at 400 documents, 69.4x at 3,200, tracking the predicted quadratic-versus-linear growth almost exactly, with the false negatives and positives of an approximate method quantified alongside it.</p>
+          <ul class="chips">
+            <li>LSH</li>
+            <li>MinHash</li>
+            <li>datasketch</li>
+            <li>Deduplication</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/lsh_text_deduplication" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
