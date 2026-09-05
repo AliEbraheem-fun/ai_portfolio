@@ -684,7 +684,7 @@
         <span class="key" style="background: var(--s4)"></span>
         <h2>Transformers</h2>
         <span class="rule"></span>
-        <span class="count">16 projects</span>
+        <span class="count">25 projects</span>
       </div>
       <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks, plus a decoder rebuilt by hand to see where the loss comes from.</p>
 
@@ -976,6 +976,18 @@
             <li>Profiling</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/arxiv_retrieval_project" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>Fuzzy Matching and Levenshtein</h3>
+          <p>Classical string matching with no model at all: Levenshtein written out from the DP matrix, then rapidfuzz doing the same work at scale. The lesson's brand-search exercise fixes a threshold of 0.2 and observes that one threshold serves long and short names badly. Sweeping all 99 thresholds says something stronger: 6 wrong brand decisions is the floor for that scheme, and 0.2 is already the optimum. fuzz.ratio is 2M/(len(text)+len(brand)), so the score carries a hard ceiling set by what fraction of the text the name occupies, and for 60 of the 168 text-brand pairs a verbatim mention still cannot reach 0.2; Nike Inc. tops out at 0.209 against a 0.2 threshold. No threshold fixes this, because the threshold is the last step and the mistake is made earlier, in choosing what gets compared to what. Slicing texts into word n-grams, adding first-word aliases so Sony matches Sony Interactive Entertainment, and filtering by length gives 0 errors across 30 consecutive thresholds. Metric choice then sets how wide that band is: plain Levenshtein charges two edits for a swapped pair of adjacent letters, confirmed on 4811 random transpositions at 100 percent, so it scores Appel against Apple at 0.600 and drops it, while OSA scores 0.800 and triples the usable band. The fix costs 19x the time, 56.6 microseconds per text, and still no GPU. Also documents that the lesson's own formula returns similarity rather than distance: it agrees with normalized_similarity on all 3000 random pairs and with normalized_distance only on the 12 where the value is exactly 0.5, the single fixed point of x to 1-x, which is precisely the example the lesson chooses to illustrate it.</p>
+          <ul class="chips">
+            <li>rapidfuzz</li>
+            <li>Levenshtein</li>
+            <li>Fuzzy Search</li>
+            <li>CPU only</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/fuzzy_search_levenshtein" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
