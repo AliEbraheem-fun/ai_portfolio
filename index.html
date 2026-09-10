@@ -684,7 +684,7 @@
         <span class="key" style="background: var(--s4)"></span>
         <h2>Transformers</h2>
         <span class="rule"></span>
-        <span class="count">28 projects</span>
+        <span class="count">29 projects</span>
       </div>
       <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks, plus a decoder rebuilt by hand to see where the loss comes from.</p>
 
@@ -1024,6 +1024,18 @@
             <li>Qwen3-Embedding</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/dedup_embeddings_vs_lsh" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>LangGraph Agent Pitfalls</h3>
+          <p>A course exercise building a calculator ReAct agent and a two-agent researcher-plus-chart-generator network on LangGraph, done without an OpenRouter or Tavily key on hand: rather than fabricate a single line of agent dialogue, the notebook verifies everything constructible offline and marks the rest as unexecuted. That still surfaced a real bug in the lesson's own precode. Passing model="deepseek/deepseek-chat-v3.1:free" as a bare string to create_react_agent does not reach OpenRouter at all: LangChain's model-string provider inference reads the "deepseek" prefix, routes through the langchain-deepseek package toward DeepSeek's native API, and demands its own DEEPSEEK_API_KEY instead of the OpenRouter credentials configured everywhere else in the lesson, reproduced as a live ValidationError even with a placeholder key. The same model identifier resolves to two different providers depending only on how it is passed, and the fix is the exact pattern the lesson's own second task already uses: construct ChatOpenAI with openai_api_base pointed at OpenRouter explicitly and pass the object instead of a string. A second finding is more structural: task two's Command[Literal["chart_generator", END]] return-type annotation on each graph node is not decorative, it is what lets draw_mermaid_png statically discover the dynamic routing at all. Stripped of the annotation, the rendered diagram shows both agent nodes as disconnected points despite identical runtime behavior; restored, it reproduces the lesson's own claimed result exactly, both directions between the two agents. Also documents that langgraph.prebuilt.create_react_agent is deprecated as of LangGraph 1.0 in favor of langchain.agents.create_agent, and that langchain-experimental, the only source of the PythonREPL tool the second task depends on, is officially being sunset.</p>
+          <ul class="chips">
+            <li>LangGraph</li>
+            <li>ReAct</li>
+            <li>Multi-Agent</li>
+            <li>OpenRouter</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/llm_agents_langgraph" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
