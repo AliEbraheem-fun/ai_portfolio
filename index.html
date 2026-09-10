@@ -684,7 +684,7 @@
         <span class="key" style="background: var(--s4)"></span>
         <h2>Transformers</h2>
         <span class="rule"></span>
-        <span class="count">30 projects</span>
+        <span class="count">31 projects</span>
       </div>
       <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks, plus a decoder rebuilt by hand to see where the loss comes from.</p>
 
@@ -1048,6 +1048,18 @@
             <li>Open-Meteo</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/agent_tools_mcp" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>Wikipedia Search Agent</h3>
+          <p>A course exercise building a Perplexity-style web agent: search Wikipedia via DuckDuckGo, scrape readable text, then have an LLM synthesize an answer, done without an OpenRouter key. Task one needs no LLM at all, live search and scraping, so it was tested for real rather than documented: a live DuckDuckGo query genuinely found the correct Wikipedia article, and a live fetch genuinely downloaded and stripped 76,138 characters of tag-free text from it. The one function the exercise asks to be written from scratch, a hostname check gating which links count as Wikipedia, was tested against two deliberately adversarial domains built to catch a naive substring check, notwikipedia.org and wikipedia.org.evil.com, both correctly rejected because the real solution compares urlparse(url).hostname rather than searching the URL string for the word wikipedia. Tasks two and three, an autogen researcher agent wired to those same search tools and a five-query planner using structured output to widen search coverage, are built from the lesson's own code and verified through object construction, tools attached, structured-output schema validated, but the actual .run() calls that would send a request to OpenRouter are commented out rather than faked; no model response in the notebook is invented.</p>
+          <ul class="chips">
+            <li>autogen</li>
+            <li>DuckDuckGo</li>
+            <li>BeautifulSoup</li>
+            <li>Structured Output</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/web_search_agent" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
