@@ -684,7 +684,7 @@
         <span class="key" style="background: var(--s4)"></span>
         <h2>Transformers</h2>
         <span class="rule"></span>
-        <span class="count">29 projects</span>
+        <span class="count">30 projects</span>
       </div>
       <p class="stage-note">Pretrained language models applied directly and fine-tuned for downstream tasks, plus a decoder rebuilt by hand to see where the loss comes from.</p>
 
@@ -1036,6 +1036,18 @@
             <li>OpenRouter</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/llm_agents_langgraph" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="3">
+          <h3>MCP Weather Server</h3>
+          <p>A course exercise on agent-tooling frameworks (autogen, smolagents) and MCP, done without an OpenRouter key: framework demos are built from the lesson's real code and verified up through client and agent construction, but no LLM call was faked. The graded task needed no key at all, an MCP server wrapping the keyless Open-Meteo API, and that let it be tested for real on three separate levels: calling the server's functions directly as plain Python, a full protocol round trip through a genuine MCP client over stdio, and converting the tool schema into OpenAI's function-calling format, all against live weather data. That real testing surfaced three environment mismatches the lesson's precode doesn't anticipate. The MCP server import fails outright on the current mcp package, whose 2.x release renamed FastMCP to MCPServer, and the library's own error message names the migration path; the notebook pins mcp==1.30.0 to match the precode verbatim. Separately, the smolagents precode's @tool decorator never constructs, because its Google-style docstring parser looks for the literal header Args: and the lesson's own Russian docstring uses Аргументы: instead, confirmed by fixing only the header while leaving the description text in Russian, which parses cleanly. Third, running any MCP client inside a Jupyter kernel on Windows throws UnsupportedOperation: fileno, because Jupyter replaces sys.stderr with a stream object that has no real file descriptor while stdio_client silently defaults its errlog parameter to sys.stderr; isolated from the rest of the MCP code on a bare fake-stderr object, and fixed by passing an explicit real file handle instead.</p>
+          <ul class="chips">
+            <li>MCP</li>
+            <li>autogen</li>
+            <li>smolagents</li>
+            <li>Open-Meteo</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/agent_tools_mcp" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
