@@ -1070,7 +1070,7 @@
         <span class="key" style="background: var(--s5)"></span>
         <h2>Multimodal</h2>
         <span class="rule"></span>
-        <span class="count">5 projects</span>
+        <span class="count">6 projects</span>
       </div>
       <p class="stage-note">Models that read text and images together in a single head.</p>
 
@@ -1134,6 +1134,18 @@
             <li>Multimodal</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/multimodal_dataset_qa" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="4">
+          <h3>CLIP Product Search</h3>
+          <p>A text-to-image product search engine for a 44,441-item fashion catalog, built by fine-tuning openai/clip-vit-base-patch32 and running for real on a local RTX 4070 rather than described from the brief. The brief set a bar of mean CLIP score above 30, and the pretrained model measured 29.72 on the held-out 4,416 products, so the target could only be reached by genuinely training something. Four epochs of standard symmetric contrastive loss took it to 31.39 while loss fell monotonically from 0.53 to 0.17. The run contained a trap worth naming: epoch one reports a mean training CLIP score of 29.59, below the untrained model, which reads like fine-tuning actively damaging it. It is not. The training mean averages over the whole epoch including the first few hundred steps that knock the weights off their pretrained optimum, while validation measured at that same epoch's end already reads 29.80, above both the start and the epoch average, so the metric was climbing inside the epoch that appears to fail. Stopping there would have produced exactly the opposite conclusion to the correct one. Exploratory analysis surfaced the dataset's real constraint: these are marketing cards, not captions, with a median of 102 words, and 62.6% run past CLIP's 77-token text limit, so the model systematically reads only the opening of each description. The search half precomputes embeddings for all 44,158 catalog images once in 502 seconds into a 90 MB matrix, reducing each query to one text encode plus one matmul at 47 ms, roughly ten thousand times faster than recomputing image vectors per query. The sharpest result came from the "mickey mouse" query: its top hit is a shirt whose description mentions mickey only at character 445, past the truncation point, meaning the model never saw that word paired with that image during training and ranked it first on visual recognition alone.</p>
+          <ul class="chips">
+            <li>CLIP</li>
+            <li>Contrastive Learning</li>
+            <li>Semantic Search</li>
+            <li>Multimodal</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/clip_product_search" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
