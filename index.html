@@ -1070,7 +1070,7 @@
         <span class="key" style="background: var(--s5)"></span>
         <h2>Multimodal</h2>
         <span class="rule"></span>
-        <span class="count">4 projects</span>
+        <span class="count">5 projects</span>
       </div>
       <p class="stage-note">Models that read text and images together in a single head.</p>
 
@@ -1122,6 +1122,18 @@
             <li>Object Detection</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/vqa_qwen" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="4">
+          <h3>SigLIP2 Dataset Auditor</h3>
+          <p>A dataset quality-control exercise: nine images labeled only by filename, validated against their filenames using google/siglip2-base-patch16-naflex, done for real on a local RTX 4070 rather than described from the page. The very first attempt to open the dataset failed outright: leg.jpg refused to load, and its magic bytes turned out to read an AVIF container header rather than JPEG, someone had renamed a .avif file to .jpg without re-encoding it, a real technical defect in the data sitting a full step before the labeling-quality question the exercise is actually about. Fixed with an AVIF decoder plugin, then continued for real: sigmoid similarity scores split into two dense clusters with a complete gap between 0.09 and 0.53 and not one image landing in between, and K-means on that single feature isolated a low-confidence cluster of exactly six files, burger, car, cats, lamp, leg, lizzard, matching what the lesson calls out by hand with no extra file and none missing. Opening the actual images explains three distinct failure modes inside that one cluster: leg.jpg is literally a photograph of a hand, a wrong label rather than a model shortfall; cats.jpeg frames two cats alongside a dog, a partially wrong label; and car.jpg and lamp.jpg show an ordinary sports car and an ordinary desk lamp that match their captions exactly, yet the model stayed unconfident anyway, a genuine model miss rather than a labeling error, exactly the puzzling case the lesson names without explaining.</p>
+          <ul class="chips">
+            <li>SigLIP2</li>
+            <li>Data Quality</li>
+            <li>K-means</li>
+            <li>Multimodal</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/multimodal_dataset_qa" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
