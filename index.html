@@ -622,9 +622,9 @@
         <span class="key" style="background: var(--s3)"></span>
         <h2>Sequence Models</h2>
         <span class="rule"></span>
-        <span class="count">4 projects</span>
+        <span class="count">5 projects</span>
       </div>
-      <p class="stage-note">Recurrent architectures for text, from a bag-of-words baseline to LSTM and GRU language models.</p>
+      <p class="stage-note">Recurrent architectures for sequences: text classification and language modeling, and audio keyword spotting with CNN, RNN and CRNN.</p>
 
       <div class="grid">
 
@@ -674,6 +674,18 @@
             <li>Perplexity</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/text_auto_completion_project" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+        <article class="card" data-stage="2">
+          <h3>Keyword Spotting (CNN, RNN, CRNN)</h3>
+          <p>Audio keyword spotting on Speech Commands: eight voice commands recognised from log-mel spectrograms under realistic distortion (additive ESC-50 noise at controlled SNR, room reverberation via RIR convolution, mobile-microphone effects). The metric is accuracy on a fixed distorted validation set, and all three models clear the 0.8 bar: CNN 0.840, RNN (GRU) 0.912, CRNN 0.925. The lesson's two-layer CNN plateaus near 0.60, so it was deepened with BatchNorm to pass; the recurrent models hold up best under distortion, CRNN losing only 0.035 against its clean score.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>torchaudio</li>
+            <li>CRNN</li>
+            <li>Audio</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/keyword_spotting" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
