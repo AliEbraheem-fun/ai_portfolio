@@ -27,6 +27,7 @@
       --s4: #8FD145;
       --s5: #C7E020;
       --s6: #FDE725;
+      --s7: #D982A6;
 
       --grid-line: rgba(132, 148, 166, 0.10);
       --cloud: rgba(132, 148, 166, 0.22);
@@ -56,6 +57,7 @@
         --s4: #55811C;
         --s5: #7A7A0E;
         --s6: #96690A;
+        --s7: #A8426E;
 
         --grid-line: rgba(16, 24, 33, 0.07);
         --cloud: rgba(85, 97, 111, 0.20);
@@ -81,6 +83,7 @@
       --s4: #55811C;
       --s5: #7A7A0E;
       --s6: #96690A;
+      --s7: #A8426E;
       --grid-line: rgba(16, 24, 33, 0.07);
       --cloud: rgba(85, 97, 111, 0.20);
       --lift: 0 6px 20px rgba(16, 24, 33, 0.09);
@@ -104,6 +107,7 @@
       --s4: #8FD145;
       --s5: #C7E020;
       --s6: #FDE725;
+      --s7: #D982A6;
       --grid-line: rgba(132, 148, 166, 0.10);
       --cloud: rgba(132, 148, 166, 0.22);
       --lift: 0 6px 24px rgba(0, 0, 0, 0.40);
@@ -146,13 +150,6 @@
       padding: 84px 0 64px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-      gap: 56px;
-      align-items: center;
-    }
-
     .eyebrow {
       margin: 0 0 18px;
       font-family: var(--mono);
@@ -171,16 +168,6 @@
       line-height: 1.03;
       text-wrap: balance;
     }
-
-    .thesis {
-      margin: 0 0 28px;
-      max-width: 46ch;
-      font-size: clamp(1rem, 1.5vw, 1.13rem);
-      color: var(--ink-dim);
-      text-wrap: pretty;
-    }
-
-    .thesis strong { color: var(--ink); font-weight: 600; }
 
     .links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
 
@@ -203,85 +190,6 @@
       color: var(--accent);
       text-decoration: none;
     }
-
-    .metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      margin: 0;
-      border-top: 1px solid var(--line);
-      padding-top: 20px;
-    }
-
-    .metric { padding-right: 34px; }
-
-    .metric .value {
-      display: block;
-      font-family: var(--mono);
-      font-size: 1.42rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      font-variant-numeric: tabular-nums;
-      color: var(--ink);
-    }
-
-    .metric .label {
-      display: block;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-top: 3px;
-    }
-
-    /* ---------- hero figure: embedding scatter ---------- */
-    .figure { margin: 0; }
-
-    .plot {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .plot canvas { display: block; width: 100%; height: 100%; }
-
-    .plot-tag {
-      position: absolute;
-      top: 12px;
-      left: 14px;
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      pointer-events: none;
-    }
-
-    .legend {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px 18px;
-      margin-top: 16px;
-      padding: 0;
-      list-style: none;
-    }
-
-    .legend a {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-family: var(--mono);
-      font-size: 0.76rem;
-      color: var(--ink-dim);
-      transition: color .16s ease;
-    }
-
-    .legend a:hover { color: var(--ink); text-decoration: none; }
 
     .key {
       width: 9px;
@@ -426,16 +334,11 @@
     /* ---------- responsive ---------- */
     @media (max-width: 900px) {
       .hero { padding: 60px 0 48px; }
-      .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-      .figure { order: -1; }
-      .plot { aspect-ratio: 16 / 10; }
     }
 
     @media (max-width: 560px) {
       .wrap { padding: 0 20px; }
       .hero { padding: 48px 0 40px; }
-      .metric { padding-right: 26px; }
-      .legend { grid-template-columns: minmax(0, 1fr); }
       .grid { grid-template-columns: minmax(0, 1fr); }
     }
 
@@ -448,53 +351,15 @@
 <body>
 
   <header class="hero">
-    <div class="wrap hero-grid">
-
+    <div class="wrap">
       <div class="hero-copy">
         <p class="eyebrow">Deep Learning Engineer, NLP and Speech</p>
         <h1>Ali Ebraheem</h1>
-        <p class="thesis">
-          Thirty-four projects along a single path: backpropagation derived by hand in
-          <strong>NumPy</strong> at one end, pretrained <strong>transformers</strong>
-          fine-tuned, made multimodal, and quantized for CPU inference at the other.
-        </p>
-
         <nav class="links">
           <a href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies" target="_blank" rel="noopener">GitLab</a>
           <a href="mailto:aliebraheem.syr@yandex.com">Email</a>
         </nav>
-
-        <div class="metrics">
-          <div class="metric">
-            <span class="value">34</span>
-            <span class="label">Projects</span>
-          </div>
-          <div class="metric">
-            <span class="value">6</span>
-            <span class="label">Stages</span>
-          </div>
-          <div class="metric">
-            <span class="value">PyTorch</span>
-            <span class="label">Core stack</span>
-          </div>
-        </div>
       </div>
-
-      <figure class="figure">
-        <div class="plot">
-          <canvas id="scatter" aria-hidden="true"></canvas>
-          <span class="plot-tag">Projects by stage</span>
-        </div>
-        <ul class="legend">
-          <li><a href="#foundations"><span class="key" style="background: var(--s1)"></span>Foundations</a></li>
-          <li><a href="#vision"><span class="key" style="background: var(--s2)"></span>Computer Vision</a></li>
-          <li><a href="#sequence"><span class="key" style="background: var(--s3)"></span>Sequence Models</a></li>
-          <li><a href="#transformers"><span class="key" style="background: var(--s4)"></span>Transformers</a></li>
-          <li><a href="#multimodal"><span class="key" style="background: var(--s5)"></span>Multimodal</a></li>
-          <li><a href="#efficiency"><span class="key" style="background: var(--s6)"></span>Efficiency</a></li>
-        </ul>
-      </figure>
-
     </div>
   </header>
 
@@ -622,9 +487,9 @@
         <span class="key" style="background: var(--s3)"></span>
         <h2>Sequence Models</h2>
         <span class="rule"></span>
-        <span class="count">5 projects</span>
+        <span class="count">4 projects</span>
       </div>
-      <p class="stage-note">Recurrent architectures for sequences: text classification and language modeling, and audio keyword spotting with CNN, RNN and CRNN.</p>
+      <p class="stage-note">Recurrent architectures for text, from a bag-of-words baseline to LSTM and GRU language models.</p>
 
       <div class="grid">
 
@@ -674,18 +539,6 @@
             <li>Perplexity</li>
           </ul>
           <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/text_auto_completion_project" target="_blank" rel="noopener">View repo</a>
-        </article>
-
-        <article class="card" data-stage="2">
-          <h3>Keyword Spotting (CNN, RNN, CRNN)</h3>
-          <p>Audio keyword spotting on Speech Commands: eight voice commands recognised from log-mel spectrograms under realistic distortion (additive ESC-50 noise at controlled SNR, room reverberation via RIR convolution, mobile-microphone effects). The metric is accuracy on a fixed distorted validation set, and all three models clear the 0.8 bar: CNN 0.840, RNN (GRU) 0.912, CRNN 0.925. The lesson's two-layer CNN plateaus near 0.60, so it was deepened with BatchNorm to pass; the recurrent models hold up best under distortion, CRNN losing only 0.035 against its clean score.</p>
-          <ul class="chips">
-            <li>PyTorch</li>
-            <li>torchaudio</li>
-            <li>CRNN</li>
-            <li>Audio</li>
-          </ul>
-          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/keyword_spotting" target="_blank" rel="noopener">View repo</a>
         </article>
 
       </div>
@@ -1225,180 +1078,34 @@
       </div>
     </section>
 
+    <section class="stage" id="speech" style="--stage: var(--s7)">
+      <div class="stage-head">
+        <span class="key" style="background: var(--s7)"></span>
+        <h2>Speech</h2>
+        <span class="rule"></span>
+        <span class="count">1 project</span>
+      </div>
+      <p class="stage-note">Audio models for spoken-command recognition, comparing convolutional, recurrent and hybrid networks under realistic distortion.</p>
+
+      <div class="grid">
+
+        <article class="card" data-stage="6">
+          <h3>Keyword Spotting (CNN, RNN, CRNN)</h3>
+          <p>Audio keyword spotting on Speech Commands: eight voice commands recognised from log-mel spectrograms under realistic distortion (additive ESC-50 noise at controlled SNR, room reverberation via RIR convolution, mobile-microphone effects). The metric is accuracy on a fixed distorted validation set, and all three models clear the 0.8 bar: CNN 0.840, RNN (GRU) 0.912, CRNN 0.925. The lesson's two-layer CNN plateaus near 0.60, so it was deepened with BatchNorm to pass; the recurrent models hold up best under distortion, CRNN losing only 0.035 against its clean score.</p>
+          <ul class="chips">
+            <li>PyTorch</li>
+            <li>torchaudio</li>
+            <li>CRNN</li>
+            <li>Audio</li>
+          </ul>
+          <a class="card-link" href="https://gitlab.com/self747980/Deep_Learning_Engineer_NLP_and_Speech_Technologies/keyword_spotting" target="_blank" rel="noopener">View repo</a>
+        </article>
+
+      </div>
+    </section>
+
   </main>
 
-  <script>
-    (function () {
-      var canvas = document.getElementById("scatter");
-      if (!canvas || !canvas.getContext) return;
-      var ctx = canvas.getContext("2d");
-
-      // deterministic pseudo-random so the figure is stable across redraws
-      function mulberry32(a) {
-        return function () {
-          a |= 0; a = (a + 0x6D2B79F5) | 0;
-          var t = Math.imul(a ^ (a >>> 15), 1 | a);
-          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-        };
-      }
-
-      // one cluster per stage; counts match the sections above
-      var clusters = [
-        { x: 0.18, y: 0.76, n: 3, spread: 0.075 },
-        { x: 0.33, y: 0.31, n: 4, spread: 0.085 },
-        { x: 0.55, y: 0.70, n: 4, spread: 0.085 },
-        { x: 0.76, y: 0.30, n: 16, spread: 0.130 },
-        { x: 0.50, y: 0.46, n: 3, spread: 0.055 },
-        { x: 0.92, y: 0.76, n: 4, spread: 0.065 }
-      ];
-
-      var stageColors = [];
-      function readColors() {
-        var cs = getComputedStyle(document.documentElement);
-        stageColors = ["--s1", "--s2", "--s3", "--s4", "--s5", "--s6"].map(function (v) {
-          return cs.getPropertyValue(v).trim() || "#888";
-        });
-        gridColor = cs.getPropertyValue("--grid-line").trim() || "rgba(128,128,128,.1)";
-        cloudColor = cs.getPropertyValue("--cloud").trim() || "rgba(128,128,128,.2)";
-      }
-      var gridColor, cloudColor;
-
-      // project points
-      var rand = mulberry32(20260725);
-      var points = [];
-      clusters.forEach(function (c, si) {
-        for (var i = 0; i < c.n; i++) {
-          var a = rand() * Math.PI * 2;
-          var r = Math.sqrt(rand()) * c.spread;
-          points.push({
-            stage: si,
-            tx: c.x + Math.cos(a) * r,
-            ty: c.y + Math.sin(a) * r * 0.9,
-            sx: 0.5 + (rand() - 0.5) * 0.5,
-            sy: 0.5 + (rand() - 0.5) * 0.5,
-            r: 3.1 + rand() * 1.5
-          });
-        }
-      });
-
-      // faint background texture, same clusters, smaller and dimmer
-      var cloudRand = mulberry32(991);
-      var cloud = [];
-      clusters.forEach(function (c) {
-        for (var i = 0; i < 26; i++) {
-          var a = cloudRand() * Math.PI * 2;
-          var r = Math.sqrt(cloudRand()) * (c.spread * 2.6);
-          cloud.push({
-            x: c.x + Math.cos(a) * r,
-            y: c.y + Math.sin(a) * r * 0.9,
-            r: 0.7 + cloudRand() * 1.1
-          });
-        }
-      });
-
-      var W = 0, H = 0, pad = 26;
-      function resize() {
-        var dpr = window.devicePixelRatio || 1;
-        var rect = canvas.getBoundingClientRect();
-        if (!rect.width || !rect.height) return;
-        W = rect.width; H = rect.height;
-        canvas.width = Math.round(W * dpr);
-        canvas.height = Math.round(H * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-
-      function px(nx) { return pad + nx * (W - pad * 2); }
-      function py(ny) { return pad + ny * (H - pad * 2); }
-
-      var activeStage = -1;
-
-      function draw(t) {
-        if (!W || !H) return;
-        ctx.clearRect(0, 0, W, H);
-
-        // faint reference grid, like a plot frame
-        ctx.strokeStyle = gridColor;
-        ctx.lineWidth = 1;
-        for (var i = 1; i <= 3; i++) {
-          var gx = Math.round(px(i / 4)) + 0.5;
-          var gy = Math.round(py(i / 4)) + 0.5;
-          ctx.beginPath(); ctx.moveTo(gx, pad); ctx.lineTo(gx, H - pad); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(pad, gy); ctx.lineTo(W - pad, gy); ctx.stroke();
-        }
-
-        ctx.fillStyle = cloudColor;
-        for (var c = 0; c < cloud.length; c++) {
-          var cp = cloud[c];
-          ctx.globalAlpha = 0.5 * t;
-          ctx.beginPath();
-          ctx.arc(px(cp.x), py(cp.y), cp.r, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-
-        for (var p = 0; p < points.length; p++) {
-          var pt = points[p];
-          var nx = pt.sx + (pt.tx - pt.sx) * t;
-          var ny = pt.sy + (pt.ty - pt.sy) * t;
-          var dim = activeStage >= 0 && activeStage !== pt.stage;
-          ctx.globalAlpha = dim ? 0.18 : 0.92;
-          ctx.fillStyle = stageColors[pt.stage];
-          ctx.beginPath();
-          ctx.arc(px(nx), py(ny), pt.r, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-      }
-
-      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-      var progress = 0;
-
-      function settle() {
-        var start = null;
-        var dur = 900;
-        function step(ts) {
-          if (start === null) start = ts;
-          var k = Math.min(1, (ts - start) / dur);
-          progress = 1 - Math.pow(1 - k, 3);
-          draw(progress);
-          if (k < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      }
-
-      function init() {
-        readColors();
-        resize();
-        if (reduced.matches) { progress = 1; draw(1); }
-        else settle();
-      }
-
-      window.addEventListener("resize", function () {
-        resize();
-        draw(progress || 1);
-      });
-
-      if (window.matchMedia) {
-        var scheme = window.matchMedia("(prefers-color-scheme: dark)");
-        var onScheme = function () { readColors(); draw(progress || 1); };
-        if (scheme.addEventListener) scheme.addEventListener("change", onScheme);
-      }
-
-      // hovering a project dims the other stages in the figure
-      document.querySelectorAll(".card").forEach(function (card) {
-        var s = parseInt(card.getAttribute("data-stage"), 10);
-        card.addEventListener("mouseenter", function () { activeStage = s; draw(progress || 1); });
-        card.addEventListener("mouseleave", function () { activeStage = -1; draw(progress || 1); });
-      });
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", init);
-      } else {
-        init();
-      }
-    })();
-  </script>
 
 </body>
 </html>
